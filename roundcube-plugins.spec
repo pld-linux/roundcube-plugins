@@ -4,7 +4,7 @@ Summary:	Roundcube Plugins
 Name:		roundcube-plugins
 Version:	0.1
 # DO NOT DECREASE RELEASE, subpackages will suffer
-Release:	1.2
+Release:	1.3
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	http://roundcube-plugins.googlecode.com/files/jqueryui-1.8.2.1.tgz
@@ -35,14 +35,19 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 RoundCube Webmail Plugins.
 
 %package -n roundcube-plugin-jqueryui
-Summary:	jquery-ui for roundcube
+Summary:	jQuery-UI for Roundcube
 Version:	%{ever %{S:0}}
 Group:		Applications/WWW
 Requires:	php-common >= 4:%{php_min_version}
 Requires:	roundcubemail
 
 %description -n roundcube-plugin-jqueryui
-jquery-ui for roundcube.
+jQueryUI adds the complete jQuery-UI library including the smoothness
+theme to Roundcube. This allows other plugins to use jQuery-UI without
+having to load their own version. The benefit of using 1 central
+jQuery-UI is that we won't run into problems of conflicting jQuery
+libraries being loaded. All plugins that want to use jQuery-UI should
+use this plugin as a requirement.
 
 %package -n roundcube-plugin-keyboard_shortcuts
 Summary:	jquery-ui for roundcube
@@ -59,10 +64,15 @@ keyboard shortcuts.
 %setup -qcT %(seq -f -a%g 0 1 | xargs)
 %undos -f php,js,css
 
+mv jqueryui/config.inc.php{.dist,}
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{pluginsdir}
 cp -a * $RPM_BUILD_ROOT%{pluginsdir}
+
+rm $RPM_BUILD_ROOT%{pluginsdir}/jqueryui/README
+rm $RPM_BUILD_ROOT%{pluginsdir}/jqueryui/config.inc.php
 
 rm $RPM_BUILD_ROOT%{pluginsdir}/keyboard_shortcuts/README
 
@@ -71,7 +81,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n roundcube-plugin-jqueryui
 %defattr(644,root,root,755)
-%{pluginsdir}/jqueryui
+%doc jqueryui/README
+%doc jqueryui/config.inc.php
+%dir %{pluginsdir}/jqueryui
+%{pluginsdir}/jqueryui/jqueryui.php
+# TODO: use jquery-ui rpm pkg here instead
+%{pluginsdir}/jqueryui/skins
+%dir %{pluginsdir}/jqueryui/js
+%{pluginsdir}/jqueryui/js/jquery-ui-*.custom.min.js
+%dir %{pluginsdir}/jqueryui/js/i18n
+# TODO %lang, or above todo
+%{pluginsdir}/jqueryui/js/i18n/jquery.ui.datepicker-*.js
 
 %files -n roundcube-plugin-keyboard_shortcuts
 %defattr(644,root,root,755)
