@@ -1,0 +1,22 @@
+--- keyboard_shortcuts/keyboard_shortcuts.php~	2010-08-27 00:53:34.000000000 +0300
++++ keyboard_shortcuts/keyboard_shortcuts.php	2010-08-27 00:53:39.344131217 +0300
+@@ -84,6 +84,7 @@
+         $c .= "<div class='shortcut_key'>a</div> ".$this->gettext('selectallvisiblemessages')."<br class='clear' />";
+         $c .= "<div class='shortcut_key'>A</div> ".$this->gettext('markallvisiblemessagesasread')."<br class='clear' />";
+         $c .= "<div class='shortcut_key'>c</div> ".$this->gettext('compose')."<br class='clear' />";
++        $c .= "<div class='shortcut_key'>d</div> ".$this->gettext('deletemessage')."<br class='clear' />";
+         $c .= "<div class='shortcut_key'>f</div> ".$this->gettext('forwardmessage')."<br class='clear' />";
+         $c .= "<div class='shortcut_key'>j</div> ".$this->gettext('previousmessages')."<br class='clear' />";
+         $c .= "<div class='shortcut_key'>k</div> ".$this->gettext('nextmessages')."<br class='clear' />";
+--- keyboard_shortcuts/keyboard_shortcuts.js~	2010-08-27 00:54:08.000000000 +0300
++++ keyboard_shortcuts/keyboard_shortcuts.js	2010-08-27 00:54:10.584128202 +0300
+@@ -100,6 +100,9 @@
+   			case 99:		// c = compose
+   				rcmail.command('compose');
+   				return false;
++				case 100:		// d = delete
++					rcmail.command('delete');
++  				return false;
+ 				case 102:		// f = forward
+ 					rcmail.command('forward');
+ 					return false;
