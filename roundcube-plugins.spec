@@ -1,3 +1,5 @@
+%define		php_min_version 5.0.0
+%include	/usr/lib/rpm/macros.php
 Summary:	Roundcube Plugins
 Name:		roundcube-plugins
 # DO NOT INCREASE VERSION, subpackages will suffer
@@ -10,11 +12,15 @@ Source0:	http://roundcube-plugins.googlecode.com/files/jqueryui-1.8.2.1.tgz
 Source1:	http://roundcube-plugins.googlecode.com/files/keyboard_shortcuts-1.5.tgz
 # Source1-md5:	7c3858cce34ead5b2a4c5a3d21e988e2
 URL:		http://code.google.com/p/roundcube-plugins/
+BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sed >= 4.0
 Requires:	roundcubemail
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# want only php deps
+%define		_noautopear	pear
 
 %define		_webapps		/etc/webapps
 %define		_webapp			roundcube
@@ -32,6 +38,7 @@ RoundCube Webmail Plugins.
 Summary:	jquery-ui for roundcube
 Version:	%{ever %{S:0}}
 Group:		Applications/WWW
+Requires:	php-common >= 4:%{php_min_version}
 Requires:	roundcubemail
 
 %description -n roundcube-plugin-jqueryui
@@ -41,6 +48,7 @@ jquery-ui for roundcube.
 Summary:	jquery-ui for roundcube
 Version:	%{ever %{S:1}}
 Group:		Applications/WWW
+Requires:	php-common >= 4:%{php_min_version}
 Requires:	roundcube-plugin-jqueryui
 Requires:	roundcubemail
 
