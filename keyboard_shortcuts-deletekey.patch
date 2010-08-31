@@ -8,9 +8,19 @@
          $c .= "<div class='shortcut_key'>f</div> ".$this->gettext('forwardmessage')."<br class='clear' />";
          $c .= "<div class='shortcut_key'>j</div> ".$this->gettext('previousmessages')."<br class='clear' />";
          $c .= "<div class='shortcut_key'>k</div> ".$this->gettext('nextmessages')."<br class='clear' />";
---- keyboard_shortcuts/keyboard_shortcuts.js~	2010-08-27 00:54:08.000000000 +0300
-+++ keyboard_shortcuts/keyboard_shortcuts.js	2010-08-27 00:54:10.584128202 +0300
-@@ -100,6 +100,9 @@
+--- keyboard_shortcuts/keyboard_shortcuts.js	2010-08-27 00:54:10.584128202 +0300
++++ keyboard_shortcuts/keyboard_shortcuts.js	2010-08-27 09:24:53.508571945 +0300
+@@ -66,6 +66,9 @@
+ 				case 99:		// c = compose
+ 					rcmail.command('compose');
+ 					return false;
++				case 100:		// d = delete
++					rcmail.command('delete');
++  				return false;
+ 				case 102:		// f = forward
+ 					if (rcmail.message_list.selection.length == 1)
+ 						rcmail.command('forward');
+@@ -100,6 +103,9 @@
    			case 99:		// c = compose
    				rcmail.command('compose');
    				return false;
