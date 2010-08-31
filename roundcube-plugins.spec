@@ -2,9 +2,9 @@
 %include	/usr/lib/rpm/macros.php
 Summary:	Roundcube Plugins
 Name:		roundcube-plugins
-Version:	0.1
+Version:	0.2
 # DO NOT DECREASE RELEASE, subpackages will suffer
-Release:	1.4
+Release:	1.5
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	http://roundcube-plugins.googlecode.com/files/jqueryui-1.8.2.1.tgz
@@ -16,7 +16,7 @@ URL:		http://code.google.com/p/roundcube-plugins/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.553
 BuildRequires:	sed >= 4.0
-Requires:	roundcubemail
+Requires:	roundcubemail >= 0.4
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
