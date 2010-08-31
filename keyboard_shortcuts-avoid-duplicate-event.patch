@@ -1,0 +1,28 @@
+--- keyboard_shortcuts/keyboard_shortcuts.js~	2010-08-31 20:23:35.389211360 +0300
++++ keyboard_shortcuts/keyboard_shortcuts.js	2010-08-31 20:22:05.000000000 +0300
+@@ -26,13 +26,18 @@
+ 		rcmail.env.keyboard_shortcuts = true;
+ 	});
+ 	
+-	$('body').keypress(function (e) { // IE
+-	  key_pressed(e);
+-	});
+-	
+-	$(document).keypress(function (e) { // Firefox
+-	  key_pressed(e);
+-	});
++	// do only one event handler, to avoid duplicate event fire
++	// rather dangerous if the event is fired twice for delete hotkey.
++	if ($.browser.msie) {
++			$('body').keypress(function (e) {
++				key_pressed(e);
++			});
++	} else {
++			// the rest of the world
++			$(document).keypress(function (e) {
++				key_pressed(e);
++			});
++	}
+ 
+   function key_pressed (e) {
+ 		if (!rcmail.env.keyboard_shortcuts || rcmail.env.action == 'compose' || rcmail.env.task == 'login' || e.ctrlKey)

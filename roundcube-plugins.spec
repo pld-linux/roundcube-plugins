@@ -4,7 +4,7 @@ Summary:	Roundcube Plugins
 Name:		roundcube-plugins
 Version:	0.2
 # DO NOT DECREASE RELEASE, subpackages will suffer
-Release:	1.5
+Release:	2
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	http://roundcube-plugins.googlecode.com/files/jqueryui-1.8.2.1.tgz
