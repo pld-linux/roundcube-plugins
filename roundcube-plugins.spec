@@ -4,15 +4,13 @@ Summary:	Roundcube Plugins
 Name:		roundcube-plugins
 Version:	0.2
 # DO NOT DECREASE RELEASE, subpackages will suffer
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	http://roundcube-plugins.googlecode.com/files/jqueryui-1.8.2.1.tgz
 # Source0-md5:	b997167d710915eac71e969fae7c033d
-Source1:	http://roundcube-plugins.googlecode.com/files/keyboard_shortcuts-1.5.tgz
-# Source1-md5:	7c3858cce34ead5b2a4c5a3d21e988e2
-Patch0:		keyboard_shortcuts-deletekey.patch
-Patch1:		keyboard_shortcuts-avoid-duplicate-event.patch
+Source1:	http://roundcube-plugins.googlecode.com/files/keyboard_shortcuts-1.6.tgz
+# Source1-md5:	8e370d91c5a4ad21bb790f969cc44b49
 URL:		http://code.google.com/p/roundcube-plugins/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.553
@@ -65,8 +63,6 @@ keyboard shortcuts.
 %prep
 %setup -qcT %(seq -f -a%g 0 1 | xargs)
 %undos -f php,js,css
-%patch0 -p0
-%patch1 -p0
 
 mv jqueryui/config.inc.php{.dist,}
 
