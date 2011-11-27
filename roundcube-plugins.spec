@@ -3,14 +3,14 @@
 Summary:	Roundcube Plugins
 Name:		roundcube-plugins
 Version:	0.2
-# DO NOT DECREASE RELEASE, subpackages will suffer
-Release:	4
+# DO NOT DECREASE RELEASE unless *all* subpackage versions are increased too
+Release:	1
 License:	GPL v2
 Group:		Applications/WWW
-Source0:	http://roundcube-plugins.googlecode.com/files/jqueryui-1.8.2.1.tgz
-# Source0-md5:	b997167d710915eac71e969fae7c033d
-Source1:	http://roundcube-plugins.googlecode.com/files/keyboard_shortcuts-1.6.tgz
-# Source1-md5:	8e370d91c5a4ad21bb790f969cc44b49
+Source0:	http://roundcube-plugins.googlecode.com/files/jqueryui-1.8.6.1.tgz
+# Source0-md5:	0cd5fe2270c5e790174829b96a2acead
+Source1:	http://roundcube-plugins.googlecode.com/files/keyboard_shortcuts-1.7.tgz
+# Source1-md5:	05566987027f5d8ef21caaffbc3e47b7
 URL:		http://code.google.com/p/roundcube-plugins/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.553
@@ -66,15 +66,18 @@ keyboard shortcuts.
 
 mv jqueryui/config.inc.php{.dist,}
 
+# all languages bundle?
+%{__rm} jqueryui/js/i18n/jquery-ui-i18n.js
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{pluginsdir}
 cp -a * $RPM_BUILD_ROOT%{pluginsdir}
 
-rm $RPM_BUILD_ROOT%{pluginsdir}/jqueryui/README
-rm $RPM_BUILD_ROOT%{pluginsdir}/jqueryui/config.inc.php
+%{__rm} $RPM_BUILD_ROOT%{pluginsdir}/jqueryui/{README,LICENSE}
+%{__rm} $RPM_BUILD_ROOT%{pluginsdir}/jqueryui/config.inc.php
 
-rm $RPM_BUILD_ROOT%{pluginsdir}/keyboard_shortcuts/README
+%{__rm} $RPM_BUILD_ROOT%{pluginsdir}/keyboard_shortcuts/{README,LICENSE}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
