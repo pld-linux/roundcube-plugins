@@ -4,7 +4,7 @@ Summary:	Roundcube Plugins
 Name:		roundcube-plugins
 Version:	0.2
 # DO NOT DECREASE RELEASE unless *all* subpackage versions are increased too
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	http://roundcube-plugins.googlecode.com/files/jqueryui-1.8.6.1.tgz
@@ -38,7 +38,7 @@ RoundCube Webmail Plugins.
 Summary:	jQuery-UI for Roundcube
 Version:	%{ever %{S:0}}
 Group:		Applications/WWW
-Requires:	php-common >= 4:%{php_min_version}
+Requires:	php(core) >= %{php_min_version}
 Requires:	roundcubemail
 
 %description -n roundcube-plugin-jqueryui
@@ -53,7 +53,7 @@ use this plugin as a requirement.
 Summary:	jquery-ui for roundcube
 Version:	%{ever %{S:1}}
 Group:		Applications/WWW
-Requires:	php-common >= 4:%{php_min_version}
+Requires:	php(core) >= %{php_min_version}
 Requires:	roundcube-plugin-jqueryui
 Requires:	roundcubemail
 
